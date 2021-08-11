@@ -1,10 +1,3 @@
-# git-tutorial
-
-# Contents
-There are two main parts:
- - A single git repository.
- - Two git repositories talking to each other (on the same filesystem).
-
 ## 1. Start git and create a couple of commits 
 
 Let's assume we are in a folder called `project` that has a single file named `file1.txt`, with the following text:
