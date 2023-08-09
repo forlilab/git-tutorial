@@ -3,13 +3,8 @@
 Let's assume we are in a folder called `project` that has a single file named `file1.txt`, with the following text:
 ```console
 user@host project $ cat file1.txt
-This is the first line of the file.
-And this is the 2nd line.
-We are just adding some random text here for the sake of modifying it and
-keeping track of the differences later.
-Differences are calculated line by line.
-
-Let us add a second paragraph just because. One line is fine.
+Roses are red.
+Violets are blue.
 ```
 
 #### 1.1 run `git init`
@@ -104,7 +99,7 @@ Date:   Tue Aug 10 22:39:05 2021 -0700
 
 #### 1.7 modify a file and compare it to the committed version
 
-Change the second line of the `file1.txt`, from `And this is the 2nd line.` to `And this is the second line.`. Now let's visualize the changes. The following command will bring up a multipanel vim editor. 
+Change the second line of the `file1.txt`, from `Violets are blue.` to `Nitrogens are blue.`. Now let's visualize the changes. The following command will bring up a multipanel vim editor. 
 
 ```console
 user@host project $ git difftool -t vimdiff
@@ -131,12 +126,12 @@ Updated 1 path from the index
 
 #### 1.9 create a second commit
 
-Again, change the second line of `file1.txt`, from `And this is the 2nd line.` to `And this is the second line.`.
+Again, change the second line of `file1.txt`, from `Violets are blue.` to `Nitrogens are blue.`.
 
 Add the changes and commit them:
 ```console
 user@host project $ git add file1.txt
-user@host project $ git commit -m "expanded 2nd to second"
+user@host project $ git commit -m "changed violets to nitrogens"
 [master 4391f65] expanded 2nd to second
  1 file changed, 1 insertion(+), 1 deletion(-)
  
@@ -145,7 +140,7 @@ commit 4391f659eb71153d0e2fd88197e7ac78b7ab0274 (HEAD -> master)
 Author: tinkywinky <tinkywinky@darkside>
 Date:   Tue Aug 10 23:01:16 2021 -0700
 
-    expanded 2nd to second
+    changed violets to nitrogens
 
 commit ad3de4cff1abdba0ceeaf53a95429f1eadb4a42f
 Author: tinkywinky <tinkywinky@darkside>

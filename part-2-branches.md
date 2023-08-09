@@ -15,29 +15,17 @@ It will state which branch is checked out, make sure it's `crazyidea`.
 
 #### 2.3 make changes
 
-Delete the second paragraph of `file1.txt` (Starting with "Let us add...") and add the following two lines:
+Modify both lines of `file1.txt` and add a third line:
 ```
-Branches are not folders. They are like pointers and act as anchors
-to append new commits.
-```
-
-The contents of the file now are:
-```console
-user@host project $ cat file1.txt
-This is the first line of the file.
-And this is the second line.
-We are just adding some random text here for the sake of modifying it and
-keeping track of the differences later.
-Differences are calculated line by line.
-
-Branches are not folders. They are like pointers and act as anchors
-to append new commits.
+Oxygens are red.
+Nitrogens are blue.
+In Cryo-EM everything is grey.
 ```
 
 #### 2.4 add and commit the changes
 ```console
 user@host project $ git add file1.txt
-user@host project $ git commit -m "modified paragraph 2"
+user@host project $ git commit -m "change to elements"
 ```
 
 #### 2.5 visualize the graph of commits
@@ -59,97 +47,70 @@ user@host project $ git merge crazyidea
 user@host project $ git log --all --decorate --oneline --graph
 ```
 
-#### 2.7 create yet another branch: `fixwording`
+#### 2.7 create a new commit in a new branch `beautify`
+
 ```console
-user@host project $ git branch fixwording
-user@host project $ git status
-user@host project $ git log --all --decorate --oneline --graph
+user@host project $ git branch beautify
+user@host project $ git checkout beautify
 ```
 
-We created the `fixwording` branch, but we are still in the master branch.
+Change `everything` to `all` in the third line of `file1.txt`.
 
-#### 2.8 do changes and commit them to `master`
-
-Split the first paragraph of `file1.txt` into two, by expanding the last line
-of the first paragraph into its own paragraph. The contents now are:
-```console
-user@host project $ cat file1.txt
-This is the first line of the file.
-And this is the second line.
-We are just adding some random text here for the sake of modifying it and
-keeping track of the differences later.
-
-Differences are calculated line by line.
-We can add binary files but the differences are not very useful.
-
-Branches are not folders. They are like pointers and act as anchors
-to append new commits.
-```
-
-Commit the changes.
 ```console
 user@host project $ git add file1.txt
-user@host project $ git commit -m "split first paragraph in two"
-```
-
-#### 2.9 run `git log --all --decorate --online --graph` to see what's up
-
-Branch `fixwording` should point to the previous commit, while `master` points
-to the latest commit.
-
-#### 2.10 commit changes to branch `fixwording`
-
-First checkout the branch. Run git status before and after changing branch.
-```console
+user@host project $ git commit -m "improve wording"
 user@host project $ git status
-user@host project $ git checkout fixwording
-user@host project $ git status
+user@host project $ git adog
 ```
 
-Also run the long `git log` command to make sure that HEAD is where we want it to be.
+#### 2.8 go back to `master` and commit
+
 ```console
-user@host project $ git log --all --decorate --online --graph
+user@host project $ git checkout master
+user@host project $ git adog
 ```
 
-Edit the file. Change lines 3, 4, and 5 from
-```
-We are just adding some random text here for the sake of modifying it and
-keeping track of the differences later.
-Differences are calculated line by line.
-```
-to
-```
-We are adding random text to modify it and to
-keep track of the differences later.
-Text differences are calculated line by line.
-```
+Change `grey` to `gray` in the third line of `file1.txt`:
 
-Add and commit the changes
 ```console
 user@host project $ git add file1.txt
-user@host project $ git commit -m "improved wording"
+user@host project $ git commit -m "changed to gray"
 ```
 
-Look at the graph with `git log --all --decorate --online --graph`
+#### 2.9 run `git log --all --decorate --online --graph` to see the branching
 
+```console
+user@host project $ git adog
+```
 
 #### 2.10 Look at differences between specific commits
 
 Consider the following commit graph
 ```
-* 82e34e7 (HEAD, fixwording) improved wording
-| * 8b3c5d6 (master) split first paragraph in two
+* 82e34e7 (HEAD, master) changed to gray
+| * 8b3c5d6 (beautify) improve wording
 |/  
-* 362bffc modified paragraph 2
-* 62fbfe6 expanded 2nd to second
+* 362bffc change to elements
+* 62fbfe6 roses to tomatoes
 * 758fe9d initial draft of mock text
 ```
 
-We can look at the differences between `master` and `fixwording` with either of these two commands:
+We can look at the differences between `master` and `beautify` with either of these two commands:
+
 ```console
-user@host project $ git difftool -t vimdiff master fixwording
+user@host project $ git difftool -t vimdiff master beautify
 user@host project $ git difftool -t vimdiff 8b3c5d6 82e34e7
 ```
 
 #### 2.11 Merge
-There will be conflicts :-)
+There will be conflicts, which need to be manually resolved.
+
+```
+Roses are red.
+Nitrogens are blue.
+<<<<<<< HEAD
+In Cryo-EM everything is gray.
+=======
+In Cryo-EM all is grey.
+>>>>>>> test
+```

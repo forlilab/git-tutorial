@@ -92,10 +92,3 @@ user@host project $ git checkout master
 user@host project $ git merge main
 user@host project $ git log --all --decorate --oneline
 ```
-
-#### 3.13 alias the long `git log` command
-```console
-user@host project $ git config --global alias.adog "log --all --decorate --oneline --graph"
-user@host project $ git adog
-```
-Could have done this earlier, maybe.
