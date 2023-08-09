@@ -114,3 +114,6 @@ In Cryo-EM everything is gray.
 In Cryo-EM all is grey.
 >>>>>>> test
 ```
+
+### go to next part
+[part 3 - remotes](part-3-remotes.md)

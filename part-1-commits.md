@@ -149,9 +149,5 @@ Date:   Tue Aug 10 22:39:05 2021 -0700
     initial draft of mock text
 ```
 
-
-
-
-
-
-
+### Go to next part
+[part 2 - branches](part-2-branches.md)
